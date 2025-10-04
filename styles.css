@@ -328,7 +328,7 @@ a:hover { color: var(--clr-primary-accent); }
   --btn-color: var(--clr-primary);
   --btn-border: var(--clr-primary-accent);
 }
-.outline-btn:hover { background: var(--clr-primary); color: #fff; }
+.outline-btn:hover { background: var(--clr-primary); color: rgb(12, 24, 201); }
 .ghost-btn {
   --btn-bg: rgba(255,255,255,0.07);
   --btn-color: var(--clr-text);
@@ -603,7 +603,7 @@ a:hover { color: var(--clr-primary-accent); }
 }
 .skill-badge i { font-size: .94rem; }
 .skill-badge:hover {
-  color: var(--clr-text);
+  color: #ffffff;
   border-color: var(--clr-primary);
   transform: translateY(-3px);
   background: linear-gradient(145deg,var(--clr-primary) 0,var(--clr-primary-accent) 100%);
@@ -1297,4 +1297,81 @@ a:hover { color: var(--clr-primary-accent); }
   align-items: center;
   gap: .65rem;
   cursor: pointer;
+}
+
+/* Make 'Dilshan' visible in dark and light themes */
+.first-name {
+  color: #fff;
+  transition: color 0.3s;
+}
+[data-theme="light"] .first-name {
+  color: #000;
+}
+
+.navbar-toggler .navbar-toggler-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 1.8em;
+  width: 1.8em;
+  background: none; /* Remove Bootstrap's default bars */
+}
+.navbar-toggler .navbar-toggler-icon span {
+  display: block;
+  width: 1.45em;
+  height: 3px;
+  background: #fff; /* Light color for dark theme */
+  border-radius: 2px;
+  margin: 3px 0;
+  transition: background 0.3s;
+}
+[data-theme="light"] .navbar-toggler .navbar-toggler-icon span {
+  background: #222; /* Dark color for light theme */
+}
+
+/* for certifications and cvs*/
+
+/* Cards Row: Make cards always the same height and aligned */
+.cards-row {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch; /* Equal height cards */
+  justify-content: center;
+}
+
+/* Info Card: Consistent padding and vertical spacing */
+.info-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space out content & button */
+  padding: 2rem 1.5rem 2.2rem;
+  min-width: 320px;
+  min-height: 340px; /* Set a min height for consistency */
+  box-sizing: border-box;
+}
+
+/* Icon alignment */
+.icon-circle {
+  margin-bottom: 1.2rem;
+  align-self: flex-start;
+}
+
+/* Button alignment & spacing */
+.info-card .btn {
+  margin-top: 1.5rem;
+  align-self: flex-start; /* Always left aligned */
+}
+
+/* Fix for small screens */
+@media (max-width: 700px) {
+  .cards-row {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .info-card {
+    min-width: unset;
+    min-height: 260px;
+    padding: 1.2rem 1rem 1.2rem;
+  }
 }

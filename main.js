@@ -301,8 +301,7 @@
   /* Contact form (frontend simulation) */
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
-    contactForm.addEventListener('submit', e => {
-      e.preventDefault();
+    contactForm.addEventListener('submit', function(e) {
       const status = document.getElementById('form-status');
       const formData = new FormData(contactForm);
       const name = formData.get('name').trim();
@@ -325,21 +324,24 @@
       }
   
       if (!valid) {
+        e.preventDefault(); // Only block submission if not valid
         status.textContent = 'Please correct highlighted fields.';
         status.style.color = 'var(--clr-danger)';
         return;
       }
-  
+      // If valid, do NOT call e.preventDefault(), so the form submits!
       status.textContent = 'Sending...';
       status.style.color = 'var(--clr-text-dim)';
-  
-      // Simulate async
-      setTimeout(() => {
-        status.textContent = 'Message sent successfully!';
-        status.style.color = 'var(--clr-success)';
-        contactForm.reset();
-      }, 900);
+      // The form will now submit to Formspree as normal
     });
+  }
+  
+  function showError(field, msg) {
+    const span = document.querySelector(`[data-error-for="${field}"]`);
+    if (span) span.textContent = msg;
+  }
+  function clearErrors() {
+    document.querySelectorAll('.error-msg').forEach(e => e.textContent = '');
   }
   
   function showError(field, msg) {
