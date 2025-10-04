@@ -896,10 +896,10 @@ a:hover { color: var(--clr-primary-accent); }
 }
 
 /* Info Cards */
-.cards-row { display: grid; gap: 1.5rem; }
+/* .cards-row { display: grid; gap: 1.5rem; }
 @media (min-width: 760px) {
   .cards-row { grid-template-columns: repeat(auto-fill,minmax(320px,1fr)); }
-}
+} */
 .info-card {
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
@@ -909,7 +909,7 @@ a:hover { color: var(--clr-primary-accent); }
   overflow: hidden;
   transition: var(--transition);
 }
-.info-card::before {
+/* .info-card::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -917,13 +917,13 @@ a:hover { color: var(--clr-primary-accent); }
   opacity: .07;
   pointer-events: none;
   transition: opacity .4s;
-}
-.info-card:hover {
+} */
+/* .info-card:hover {
   transform: translateY(-6px);
   border-color: var(--clr-primary);
   box-shadow: 0 16px 42px -14px rgba(0,0,0,.7);
-}
-.info-card:hover::before { opacity: .15; }
+} */
+/* .info-card:hover::before { opacity: .15; }
 .info-card h3 { margin-top: .15rem; }
 .icon-circle {
   width: 54px;
@@ -936,9 +936,53 @@ a:hover { color: var(--clr-primary-accent); }
   border-radius: 18px;
   box-shadow: var(--shadow-sm);
   margin-bottom: .85rem;
-}
-.icon-circle.cert {
+} */
+/* .icon-circle.cert {
   background: linear-gradient(145deg,#e23237,#b52e31);
+} */
+
+/* Cards Row: Make cards always the same height and aligned */
+.cards-row {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch; /* Equal height cards */
+  justify-content: center;
+}
+
+/* Info Card: Consistent padding and vertical spacing */
+.info-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space out content & button */
+  padding: 2rem 1.5rem 2.2rem;
+  min-width: 320px;
+  min-height: 340px; /* Set a min height for consistency */
+  box-sizing: border-box;
+}
+
+/* Icon alignment */
+.icon-circle {
+  margin-bottom: 1.2rem;
+  align-self: flex-start;
+}
+
+/* Button alignment & spacing */
+.info-card .btn {
+  margin-top: 1.5rem;
+  align-self: flex-start; /* Always left aligned */
+}
+
+/* Fix for small screens */
+@media (max-width: 700px) {
+  .cards-row {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .info-card {
+    min-width: unset;
+    min-height: 260px;
+    padding: 1.2rem 1rem 1.2rem;
+  }
 }
 
 /* Blogs */
@@ -1330,48 +1374,3 @@ a:hover { color: var(--clr-primary-accent); }
   background: #222; /* Dark color for light theme */
 }
 
-/* for certifications and cvs*/
-
-/* Cards Row: Make cards always the same height and aligned */
-.cards-row {
-  display: flex;
-  gap: 2rem;
-  align-items: stretch; /* Equal height cards */
-  justify-content: center;
-}
-
-/* Info Card: Consistent padding and vertical spacing */
-.info-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Space out content & button */
-  padding: 2rem 1.5rem 2.2rem;
-  min-width: 320px;
-  min-height: 340px; /* Set a min height for consistency */
-  box-sizing: border-box;
-}
-
-/* Icon alignment */
-.icon-circle {
-  margin-bottom: 1.2rem;
-  align-self: flex-start;
-}
-
-/* Button alignment & spacing */
-.info-card .btn {
-  margin-top: 1.5rem;
-  align-self: flex-start; /* Always left aligned */
-}
-
-/* Fix for small screens */
-@media (max-width: 700px) {
-  .cards-row {
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-  .info-card {
-    min-width: unset;
-    min-height: 260px;
-    padding: 1.2rem 1rem 1.2rem;
-  }
-}
